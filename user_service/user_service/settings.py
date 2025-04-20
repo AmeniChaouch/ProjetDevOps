@@ -40,6 +40,8 @@ INSTALLED_APPS = [
      'oauth2_provider',
     'rest_framework',
     'users',
+    'social_django',
+
 ]
 
 MIDDLEWARE = [
@@ -51,7 +53,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
      'oauth2_provider.middleware.OAuth2TokenMiddleware',
-
+'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 import os
 ROOT_URLCONF = "user_service.urls"
@@ -123,3 +125,10 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Configurer OAuth 2.0
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "738063932824-gp9j08nmf4rj1p5cde2p7cgmnbqaqgn4.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)

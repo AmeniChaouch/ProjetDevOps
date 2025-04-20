@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from salles.views import SalleDisponibiliteView
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('salles/<int:salle_id>/disponibilites/', SalleDisponibiliteView.as_view(), name='salle-disponibilites'),
 ]
